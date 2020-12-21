@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:58:32 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 15:44:04 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/21 21:05:25 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define COPY 1
 # define NOCOPY 0
 
-char	*ft_gnljoin(char *s1, char *s2);
+int		ft_gnljoin(char **s1, char *s2);
 size_t	ft_strlcpy(char *dest, char *src, size_t n);
 int		get_next_line(int fd, char **line);
 void	ft_bzero(void *s, size_t n);

@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 17:13:44 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 17:13:30 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/21 21:21:29 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,27 +72,24 @@ size_t	ft_strlcat(char *dest, char *src, size_t size)
 	return (dest_len + src_len);
 }
 
-char	*ft_gnljoin(char *s1, char *s2)
+int		ft_gnljoin(char **s1, char *s2)
 {
 	char	*str;
 	size_t	str_len;
 
-	if (s1 == NULL)
+	if (*s1 == NULL)
 	{
-		if (!(s1 = (char*)malloc(sizeof(char))))
-			return (NULL);
+		if (!(*s1 = (char*)malloc(sizeof(char))))
+			return (-1);
 		ft_bzero(s1, 1);
 	}
-	str_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str_len = ft_strlen(*s1) + ft_strlen(s2) + 1;
 	if (!(str = (char*)malloc(sizeof(char) * str_len)))
-	{
-		if (s1 != NULL)
-			free(s1);
-		return (NULL);
-	}
-	ft_strlcpy(str, s1, str_len);
+		return (-1);
+	ft_strlcpy(str, *s1, str_len);
 	ft_strlcat(str, s2, str_len);
-	if(s1 != NULL)
-		free(s1);
-	return (str);
+	if(*s1 != NULL)
+		free(*s1);
+	*s1 = str;
+	return (0);
 }

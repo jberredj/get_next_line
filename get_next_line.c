@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:40:41 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 17:20:46 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/21 21:05:27 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_chest(int fd, char **chest, char **line)
 		line_read = check_endline(chest[fd], chest[fd], NOCOPY);
 		while (chest[fd][i++] != '\0')
 			;
-		if (!(*line = ft_gnljoin(*line, chest[fd])))
+		if (ft_gnljoin(line, chest[fd]) == -1)
 			return (gnl_clean(-1, line, chest, fd));
 		ft_strlcpy(chest[fd], &chest[fd][i], BUFFER_SIZE);
 	}
@@ -95,7 +95,7 @@ int	get_line(int fd, char **chest, char **line)
 		if ((read_size = read(fd, buffer, BUFFER_SIZE)) < 0)
 			return (gnl_clean(read_size, line, chest, fd));
 		end = check_endline(buffer, chest[fd], COPY);
-		if (!(*line = ft_gnljoin(*line, buffer)))
+		if (ft_gnljoin(line, buffer) == -1)
 			return (gnl_clean(-1, line, chest, fd));
 		else if (end == 0 && read_size < BUFFER_SIZE)
 			return (gnl_clean(0, line, chest, fd));
