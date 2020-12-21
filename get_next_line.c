@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:40:41 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 16:53:42 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/21 17:18:41 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	gnl_clean(int code, char **line, char **chest, int fd)
 	if (code == -1)
 		if (*line != NULL)
 		{
-			free(line);
+			free(*line);
 			line = NULL;
 		}
 	return (code);
