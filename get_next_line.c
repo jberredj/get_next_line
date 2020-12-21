@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:40:41 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 16:49:17 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/21 16:53:42 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,8 @@ int	get_line(int fd, char **chest, char **line)
 		end = check_endline(buffer, chest[fd], COPY);
 		if (!(*line = ft_gnljoin(*line, buffer)))
 			return (gnl_clean(-1, line, chest, fd));
-		if (read_size == 0)
-			return(gnl_clean(0, line, chest, fd));
 		else if (end == 0 && read_size < BUFFER_SIZE)
-			return (1);
+			return (gnl_clean(0, line, chest, fd));
 	}
 	return (1);
 }
