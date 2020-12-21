@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:58:32 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 21:05:25 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/22 00:25:58 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # include <unistd.h>
 # include <stdlib.h>
 # define COPY 1
@@ -30,8 +29,4 @@ void	ft_bzero(void *s, size_t n);
 
 #ifndef FD_MAX
 # define FD_MAX 65536
-#endif
-
-#ifdef MALLOC_FAIL
-# define malloc(x) NULL
 #endif

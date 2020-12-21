@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 17:13:44 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/22 00:17:28 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/22 00:25:08 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		ft_gnljoin(char **s1, char *s2)
 		return (-1);
 	ft_strlcpy(str, *s1, str_len);
 	ft_strlcat(str, s2, str_len);
-	if(*s1 != NULL)
+	if (*s1 != NULL)
 		free(*s1);
 	*s1 = str;
 	return (0);

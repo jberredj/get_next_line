@@ -6,12 +6,12 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:40:41 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 23:58:43 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/22 00:24:08 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
+
 int	check_endline(char *buffer, char *chest, int param)
 {
 	int	end;
@@ -112,6 +112,7 @@ int	get_next_line(int fd, char **line)
 
 	line_read = 0;
 	code = 0;
+	valid_fd = 0;
 	if ((fd < 0 || fd > FD_MAX) || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	if ((valid_fd = read(fd, line, 0)) == -1)

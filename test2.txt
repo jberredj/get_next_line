@@ -1,8 +1,0 @@
-Je suis le second fichier
-Je suis lu en meme temps que le premier
-a
-a
-
-a
-a
-Fin du second fichier
