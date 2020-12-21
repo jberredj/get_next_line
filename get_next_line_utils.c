@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 17:13:44 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 16:14:47 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/21 17:01:23 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ char	*ft_gnljoin(char *s1, char *s2)
 		return (NULL);
 	ft_strlcpy(str, s1, str_len);
 	ft_strlcat(str, s2, str_len);
-	free(s1);
-	s1 = NULL;
+	if(s1 != NULL)
+	{
+		free(s1);
+		s1 = NULL;
+	}
 	return (str);
 }
