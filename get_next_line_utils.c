@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 17:13:44 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 17:01:23 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/21 17:13:30 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,15 @@ char	*ft_gnljoin(char *s1, char *s2)
 		ft_bzero(s1, 1);
 	}
 	str_len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = (char*)malloc(sizeof(char) * str_len);
-	if (str == NULL)
+	if (!(str = (char*)malloc(sizeof(char) * str_len)))
+	{
+		if (s1 != NULL)
+			free(s1);
 		return (NULL);
+	}
 	ft_strlcpy(str, s1, str_len);
 	ft_strlcat(str, s2, str_len);
 	if(s1 != NULL)
-	{
 		free(s1);
-		s1 = NULL;
-	}
 	return (str);
 }
