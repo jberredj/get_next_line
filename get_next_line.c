@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:40:41 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/21 21:05:27 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/21 21:35:03 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	get_next_line(int fd, char **line)
 
 	line_read = 0;
 	code = 0;
-	if ((fd < 0 || fd > FD_MAX) || *line != NULL || BUFFER_SIZE <= 0)
+	if ((fd < 0 || fd > FD_MAX) || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	if ((valid_fd = read(fd, line, 0)) == -1)
 		return (gnl_clean(-1, line, chest, fd));
