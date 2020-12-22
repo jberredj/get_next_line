@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:40:41 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/22 16:44:21 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/22 17:07:28 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int			get_next_line(int fd, char **line)
 	int			valid_fd;
 	int			code;
 	int			line_read;
-:w
 
 	line_read = 0;
 	code = 0;
