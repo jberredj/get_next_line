@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:40:41 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/22 00:55:41 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/22 16:44:21 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,12 @@ int			get_next_line(int fd, char **line)
 	int			valid_fd;
 	int			code;
 	int			line_read;
+:w
 
 	line_read = 0;
 	code = 0;
 	valid_fd = 0;
-	if ((fd < 0 || fd > FD_MAX) || !line || BUFFER_SIZE <= 0)
+	if ((fd < 0 || fd >= FD_MAX) || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	if ((valid_fd = read(fd, line, 0)) == -1)
 		return (-1);
