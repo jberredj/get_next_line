@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:58:32 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/22 00:26:04 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/24 14:38:47 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@
 # include <stdlib.h>
 # define COPY 1
 # define NOCOPY 0
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+# ifndef FD_MAX
+#  define FD_MAX 65536
+# endif
 
 int		ft_gnljoin(char **s1, char *s2);
 size_t	ft_strlcpy(char *dest, char *src, size_t n);
 int		get_next_line(int fd, char **line);
 void	ft_bzero(void *s, size_t n);
-#endif
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
-#endif
-
-#ifndef FD_MAX
-# define FD_MAX 65536
 #endif

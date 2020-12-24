@@ -6,7 +6,7 @@
 /*   By: jberredj <jberredj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 16:40:41 by jberredj          #+#    #+#             */
-/*   Updated: 2020/12/22 17:07:28 by jberredj         ###   ########.fr       */
+/*   Updated: 2020/12/24 14:42:13 by jberredj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static int	check_endline(char *buffer, char *chest, int param)
 {
 	int	end;
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	end = 0;
 	i = 0;
@@ -41,29 +41,34 @@ static int	check_endline(char *buffer, char *chest, int param)
 static int	gnl_clean(int code, char **line, char **chest, int fd)
 {
 	if (code <= 0)
+	{
 		if (chest[fd] != NULL)
 		{
 			free(chest[fd]);
 			chest[fd] = NULL;
 		}
+	}
 	if (code == -1)
+	{
 		if (*line != NULL)
 		{
 			free(*line);
 			*line = NULL;
 		}
+	}
 	return (code);
 }
 
 static int	check_chest(int fd, char **chest, char **line)
 {
 	int	line_read;
-	int i;
+	int	i;
 
 	line_read = 0;
 	if (chest[fd] == NULL)
 	{
-		if (!(chest[fd] = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		chest[fd] = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		if (chest[fd] == NULL)
 			return (gnl_clean(-1, line, chest, fd));
 	}
 	else
@@ -92,7 +97,8 @@ static int	get_line(int fd, char **chest, char **line)
 	while (end == 0)
 	{
 		ft_bzero(buffer, sizeof(char) * (BUFFER_SIZE + 1));
-		if ((read_size = read(fd, buffer, BUFFER_SIZE)) < 0)
+		read_size = read(fd, buffer, BUFFER_SIZE);
+		if (read_size < 0)
 			return (gnl_clean(read_size, line, chest, fd));
 		end = check_endline(buffer, chest[fd], COPY);
 		if (ft_gnljoin(line, buffer) == -1)
@@ -103,7 +109,7 @@ static int	get_line(int fd, char **chest, char **line)
 	return (1);
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*chest[FD_MAX];
 	int			valid_fd;
@@ -115,12 +121,15 @@ int			get_next_line(int fd, char **line)
 	valid_fd = 0;
 	if ((fd < 0 || fd >= FD_MAX) || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	if ((valid_fd = read(fd, line, 0)) == -1)
+	valid_fd = read(fd, line, 0);
+	if (valid_fd == -1)
 		return (-1);
-	if (!(*line = (char*)malloc(sizeof(char))))
+	*line = (char*)malloc(sizeof(char));
+	if (line == NULL)
 		return (gnl_clean(-1, line, chest, fd));
 	ft_bzero(*line, sizeof(char));
-	if ((line_read = check_chest(fd, chest, line)) != 0)
+	line_read = check_chest(fd, chest, line);
+	if (line_read != 0)
 		return (gnl_clean(line_read, line, chest, fd));
 	code = get_line(fd, chest, line);
 	return (code);
